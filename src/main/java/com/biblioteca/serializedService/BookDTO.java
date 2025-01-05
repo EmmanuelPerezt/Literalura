@@ -3,8 +3,11 @@ package com.biblioteca.serializedService;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BookDTO {
     
     @JsonProperty("id")
@@ -12,13 +15,16 @@ public class BookDTO {
     @JsonProperty("title")
     String title;
     @JsonProperty("languages")
-    String languages;
+    List<String> languages;
     @JsonProperty("authors")
-    List<String> authors= new ArrayList<>();
+    List<AuthorDTO> authors= new ArrayList<>();
 
 
+    public BookDTO() {
+    }
 
-    public BookDTO(Integer id, String title, String languages, List<String> authors) {
+
+    public BookDTO(Integer id, String title, List<String> languages, List<AuthorDTO> authors) {
         this.id = id;
         this.title = title;
         this.languages = languages;
@@ -37,16 +43,16 @@ public class BookDTO {
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getLanguages() {
+    public List<String> getLanguages() {
         return languages;
     }
-    public void setLanguages(String languages) {
+    public void setLanguages(List<String> languages) {
         this.languages = languages;
     }
-    public List<String> getAuthors() {
+    public List<AuthorDTO> getAuthors() {
         return authors;
     }
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(List<AuthorDTO> authors) {
         this.authors = authors;
     }
     

@@ -24,7 +24,6 @@ public class DataAddedService {
 
 
     public void addData () throws IOException, InterruptedException{
-        bookRepository.deleteAll();
         var request = new Httprequestcontroller();
         String res = request.sendRequest("https://gutendex.com/books/");
 
@@ -40,14 +39,15 @@ public class DataAddedService {
 
 
             BookModel bookModel = new BookModel();
+
             bookModel.setId(book.getId());
             bookModel.setTitle(book.getTitle());
-            bookModel.setLanguage(book.getLanguages());
+            bookModel.setLanguage((String.join(",", book.getLanguages())));
 
             List<AuthorModel> authors = book.getAuthors().stream()
-                    .map(name -> {
+                    .map(AuthorDTO -> {
                         AuthorModel author = new AuthorModel();
-                        author.setName(name);
+                        author.setName(AuthorDTO.getName());
                         return authorRepository.save(author);
                     }).collect(Collectors.toList());
             bookModel.setAuthors(authors);
@@ -57,7 +57,7 @@ public class DataAddedService {
 
 
 
-
+        System.out.println("Data added");
 
 
     }

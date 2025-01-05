@@ -74,10 +74,8 @@ class  options {
 
 
     public void option1() throws IOException, InterruptedException {
-        System.out.println("Listar libros");
-        var request = new Httprequestcontroller();
-        String res = request.sendRequest("https://gutendex.com/books/");
-        System.out.println(res);
+        DataAddedService data = new DataAddedService();
+        data.addData();
     }
     public void option2() {
         System.out.println("Buscar libro");
