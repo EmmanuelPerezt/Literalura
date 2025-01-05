@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
+
 @Component
 public class Menucontroller implements CommandLineRunner {
 
@@ -94,7 +95,4 @@ class  options {
         System.out.println("Salir");
     }
 
-
-
-    
 }
