@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BookSerializedModel {
+public class BookDTO {
     
     @JsonProperty("id")
     Integer id;
@@ -18,7 +18,7 @@ public class BookSerializedModel {
 
 
 
-    public BookSerializedModel(Integer id, String title, String languages, List<String> authors) {
+    public BookDTO(Integer id, String title, String languages, List<String> authors) {
         this.id = id;
         this.title = title;
         this.languages = languages;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends JpaRepository<BookModel, Long> {
+public interface BookRepository extends JpaRepository<BookModel, Integer> {
     List<BookModel> findByTitle(String title);
     List<BookModel> findByLanguage(String language);
    /*  List<BookModel> findByAuthors(String author);
