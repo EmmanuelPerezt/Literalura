@@ -9,16 +9,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Menucontroller implements CommandLineRunner {
+    //
+
+    private final options opts;
+
+    //debemos llamar a la clase options para poder acceder a sus metodos mediante spring
+    public Menucontroller(options opts){
+        this.opts = opts;
+    }
 
     @Override
     public void run(String... args) throws Exception {
-
-
         var scanner = new Scanner(System.in);
         int option;
-        var opts= new options();
         do {
-            
             options.showMenu();
             option = scanner.nextInt();
             switch (option) {
@@ -55,8 +59,15 @@ public class Menucontroller implements CommandLineRunner {
 
 
 
-
+@Component
 class  options {
+
+    //inyectar repositorios
+    private final DataAddedService dataAddedService;
+    public options(DataAddedService dataAddedService) {
+        this.dataAddedService = dataAddedService;
+
+    }
     private final static String menu = """
         Ingresa una opción:
         1. Listar libros
@@ -74,8 +85,7 @@ class  options {
 
 
     public void option1() throws IOException, InterruptedException {
-        DataAddedService data = new DataAddedService();
-        data.addData();
+        dataAddedService.addData();
     }
     public void option2() {
         System.out.println("Buscar libro");

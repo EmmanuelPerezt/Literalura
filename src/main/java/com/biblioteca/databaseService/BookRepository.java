@@ -3,7 +3,9 @@ package com.biblioteca.databaseService;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface BookRepository extends JpaRepository<BookModel, Integer> {
     List<BookModel> findByTitle(String title);
     List<BookModel> findByLanguage(String language);

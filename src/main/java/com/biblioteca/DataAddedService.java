@@ -23,6 +23,15 @@ public class DataAddedService {
     private AuthorRepository authorRepository;
 
 
+    //constructor para inyectar las dependencias
+    public DataAddedService(BookRepository bookRepository, AuthorRepository authorRepository){
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+    }
+
+
+
+
     public void addData () throws IOException, InterruptedException{
         var request = new Httprequestcontroller();
         String res = request.sendRequest("https://gutendex.com/books/");
