@@ -30,7 +30,11 @@ public class Menucontroller implements CommandLineRunner {
                     opts.option1();
                     break;
                 case 2:
-                    System.out.println("Buscar libro");
+                scanner.nextLine();
+                System.out.println("cual es el titulo del libro que deseas buscar?\n");
+                String title = scanner.nextLine();
+                System.out.println("buscamos un libro con el titulo: " + title);
+                opts.option2(title);
                     break;
                 case 3:
                     System.out.println("Agregar libro");
@@ -70,10 +74,10 @@ class  options {
     }
     private final static String menu = """
         Ingresa una opción:
-        1. Listar libros
-        2. Buscar libro
-        3. Agregar libro
-        4. Actualizar libro
+        1. Agregar libros a la base de datos
+        2. Buscar libro por titulo
+        3. buscar libro por autor
+        4. buscar por lenguaje
         5. Eliminar libro
         6. Salir
                 """;
@@ -87,8 +91,8 @@ class  options {
     public void option1() throws IOException, InterruptedException {
         dataAddedService.addData();
     }
-    public void option2() {
-        System.out.println("Buscar libro");
+    public void option2(String title) {
+        dataAddedService.findbyTitle(title);
     }
     public void option3() {
         System.out.println("Agregar libro");

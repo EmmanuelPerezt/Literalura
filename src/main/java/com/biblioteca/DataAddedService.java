@@ -15,11 +15,11 @@ import com.biblioteca.serializedService.BookDTO;
 import com.biblioteca.serializedService.BookWrapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class DataAddedService {
-    @Autowired
     private BookRepository bookRepository;
-    @Autowired
     private AuthorRepository authorRepository;
 
 
@@ -63,11 +63,26 @@ public class DataAddedService {
             bookRepository.save(bookModel);
             
         }
-
-
-
         System.out.println("Data added");
-
-
+    }
+    @Transactional
+    public void findbyTitle(String title){
+        List<BookModel> books = bookRepository.findByTitle(title);
+        if (!books.isEmpty()){
+        System.out.println("Libros encontrados: ");
+        books.forEach(book -> {
+            System.out.println("Id: " + book.getId()+"\n");
+            System.out.println("Titulo: " + book.getTitle()+"\n");
+            System.out.println("Lenguaje: " + book.getLanguage()+"\n");
+            System.out.println("Autores: ");
+            book.getAuthors().forEach(author -> {
+                System.out.println("Nombre: " + author.getName());
+            });
+        });
+        } else {
+            System.out.println("No se encontraron libros con ese titulo");
+            
+            
+        }
     }
 }

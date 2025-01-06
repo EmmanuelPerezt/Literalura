@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface BookRepository extends JpaRepository<BookModel, Integer> {
     List<BookModel> findByTitle(String title);
     List<BookModel> findByLanguage(String language);
+    List<BookModel> findByAuthors_name(String author);
    /*  List<BookModel> findByAuthors(String author);
     List<BookModel> findByTitleAndLanguage(String title, String language);
     List<BookModel> findByTitleAndAuthors(String title, String author);
