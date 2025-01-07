@@ -37,10 +37,18 @@ public class Menucontroller implements CommandLineRunner {
                 opts.option2(title);
                     break;
                 case 3:
-                    System.out.println("Agregar libro");
+                scanner.nextLine();
+                System.out.println("cual es el autor del libro que deseas buscar?\n");
+                String author = scanner.nextLine();
+                System.out.println("buscamos un libro con el autor: " + author);
+                opts.option3(author);
                     break;
                 case 4:
-                    System.out.println("Actualizar libro");
+                scanner.nextLine();
+                System.out.println("buscar por lenguaje\n");
+                String lenguage = scanner.nextLine();
+                System.out.println("buscamos un libro con el lenguaje: " + lenguage);
+                opts.option4(lenguage);
                     break;
                 case 5:
                     System.out.println("Eliminar libro");
@@ -94,11 +102,11 @@ class  options {
     public void option2(String title) {
         dataAddedService.findbyTitle(title);
     }
-    public void option3() {
-        System.out.println("Agregar libro");
+    public void option3(String author) {
+        dataAddedService.findByauthor(author);
     }
-    public void option4() {
-        System.out.println("Actualizar libro");
+    public void option4(String lenguage) {
+        dataAddedService.findBylanguage(lenguage);
     }
     public void option5() {
         System.out.println("Eliminar libro");
