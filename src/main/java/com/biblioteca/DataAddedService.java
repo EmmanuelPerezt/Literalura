@@ -56,7 +56,7 @@ public class DataAddedService {
             bookRepository.save(bookModel);
 
         }
-        System.out.println("Data added");
+        System.out.println("Libros agregados");
     }
 
     @Transactional
@@ -122,5 +122,9 @@ public class DataAddedService {
             System.out.println("No se encontraron libros con ese lenguaje");
 
         }
+    }
+    public void deleteAll() {
+        bookRepository.deleteAll();
+        System.out.println("Base de datos eliminada");
     }
 }

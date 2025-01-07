@@ -51,7 +51,7 @@ public class Menucontroller implements CommandLineRunner {
                 opts.option4(lenguage);
                     break;
                 case 5:
-                    System.out.println("Eliminar libro");
+                    opts.option5();
                     break;
                 case 6:
                     System.out.println("Salir");
@@ -86,7 +86,7 @@ class  options {
         2. Buscar libro por titulo
         3. buscar libro por autor
         4. buscar por lenguaje
-        5. Eliminar libro
+        5. eliminar toda la base de datos
         6. Salir
                 """;
     
@@ -109,7 +109,7 @@ class  options {
         dataAddedService.findBylanguage(lenguage);
     }
     public void option5() {
-        System.out.println("Eliminar libro");
+        dataAddedService.deleteAll();
     }
     public void option6() {
         System.out.println("Salir");
